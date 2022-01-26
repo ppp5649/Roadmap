@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'major',
     'taggit',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko-kr'  # 언어 설정 한국어가 제일 나은듯
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
