@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
+from .forms import LoginForm
 
 from .models import BoardMember
 
@@ -28,11 +29,42 @@ def register(request):
             print(res_data)
 
         else:
-            member = BoardMember(
+            user = BoardMember(
                 username=username,
                 email=email,
                 password=make_password(password)
             )
-            member.save()
+            user.save()
 
         return render(request, 'register.html', res_data)
+
+
+def home(request):
+    user_id = request.session.get('user')
+
+    if user_id:
+        user = BoardMember.objects.get(pk=user_id)
+        return HttpResponse(user.email)
+
+    return HttpResponse('Home!')
+
+
+def login(request):
+
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            # session_code 검증하기
+            request.session['user'] = form.user_id
+            return redirect('/')
+    else:
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form': form})
+
+
+def logout(request):
+    if request.session.get('user'):
+        del(request.session['user'])
+
+    return redirect('/')

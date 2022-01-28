@@ -20,6 +20,7 @@ from job.views import job
 from major.views import major
 from django.conf.urls.static import static
 from django.conf import settings
+from user.views import home
 
 
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
     path('postjob/<int:pk>', post_job_detail, name='jobdetail'),
     path('postmajor/<int:pk>', post_major_detail, name='majordetail'),
     path('user/', include('user.urls')),
+    path('', home, name='home'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
