@@ -6,11 +6,11 @@
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
-                            <h1>{{post_job_detail.title}}</h1><br>
-                             <a>조회수:{{post_job_detail.viewCount}} &nbsp;좋아요:{{post_job_detail.likeCount}}</a><br>
+                            <h1>{{post_detail.title}}</h1><br>
+                             <a>조회수:{{post_detail.viewCount}} &nbsp;좋아요:{{post_detail.likeCount}}</a><br>
                             <a>Posted by
-                                <a href="#!">HJ</a>
-                                &nbsp;{{post_job_detail.dateCreate}}
+                                <a href="#!">{{post_detail.writer}}</a>
+                                &nbsp;{{post_detail.created_at}}
                             </a>
                             <hr class="my-4" />
                         </div>
@@ -23,12 +23,12 @@
             <div class="container px-4 px-lg-1">
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>{{post_job_detail.contents|linebreaks}}</p> 
+                        <p>{{post_detail.contents|linebreaks}}</p> 
                         <!--안넣으면 띄어쓰기안됨-->
-                        {% if post_job_detail.img %}
-                        <img class="img-fluid" src="{{post_job_detail.img.url}}" alt="" /></a>
+                        {% if post_detail.img %}
+                        <img class="img-fluid" src="{{post_detail.img.url}}" alt="" /></a>
                         {% endif %}
-                        <p>{{post_job_detail.category.names.0}}</p>
+                        <p>{{post_detail.category.names.0}}</p>
                     </div>
                 </div>
             </div>

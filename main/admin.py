@@ -1,16 +1,9 @@
 from django.contrib import admin
-from main.models import PostJob, PostMajor
+from main.models import Post
 
 
-class PostJobAdmin(admin.ModelAdmin):
+class PostAdmin(admin.ModelAdmin):
     list_display = ('title')
 
 
-admin.site.register(PostJob)
-
-
-class PostMajorAdmin(admin.ModelAdmin):
-    list_display = ('title')
-
-
-admin.site.register(PostMajor)
+admin.site.register(Post)

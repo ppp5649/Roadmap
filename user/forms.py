@@ -21,7 +21,12 @@ class LoginForm(forms.Form):
         password = cleaned_data.get('password')
 
         if email and password:
-            user = BoardMember.objects.get(email=email)
+            try:
+                user = BoardMember.objects.get(email=email)
+            except BoardMember.DoesNotExist:
+                self.add_error('email', '존재하지 않는 이메일입니다!')
+                return
+                # 예외처리를 하고 return 을 실행해서 바로 아래 코드를 실행하지 않고 빠져나오게 한다.
 
             if not check_password(password, user.password):
                 self.add_error('password', '비밀번호가 다릅니다!')

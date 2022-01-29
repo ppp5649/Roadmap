@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block body %}
+{% load static %}      
+<div class="container"> <!-- 주제가 바뀔 때 마다 컨테이너를 새로 할당 -->
+    <div class="row">
+        <div class="card border-primary mb-3" style="max-width: 25rem;">
+            <div class="card-header">{{board_name}}리뷰</div>
+            {% for post_detail in post %}
+            <div class="card-body">
+                <a href="{% url 'post_detail' post_detail.pk %}">
+                <h6 class="card-title">{{post_detail.title}}</h6>
+                </a>
+                <p class="card-text">작성자
+                    <a href="#!">{{post_detail.writer}}</a>
+                    {{post_detail.created_at}}
+                </p>
+                <p class="post-counter">
+                    <i class="far fa-thumbs-up"> {{post_detail.likeCount}}</i>
+                    &nbsp;
+                    <i class="far fa-eye"> {{post_detail.viewCount}}</i>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="card border-primary mb-3" style="max-width: 25rem;">
+            <div class="card-header">{{board_name}}리뷰</div>
+            {% for post_detail in post_job %}
+            <div class="card-body">
+                <a href="{% url 'post_detail' post_detail.pk %}">
+                <h6 class="card-title">{{post_detail.title}}</h6>
+                </a>
+                <p class="card-text">작성자
+                    <a href="#!">{{post_detail.writer}}</a>
+                    {{post_detail.created_at}}
+                </p>
+                <p class="post-counter">
+                    <i class="far fa-thumbs-up"> {{post_detail.likeCount}}</i>
+                    &nbsp;
+                    <i class="far fa-eye"> {{post_detail.viewCount}}</i>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>        
+{% endblock body %}

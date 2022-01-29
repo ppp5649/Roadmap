@@ -15,9 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main.views import index, post_job_detail, post_major_detail
-from job.views import job
-from major.views import major
+from main.views import index, post_detail
+from board.views import job, major
 from django.conf.urls.static import static
 from django.conf import settings
 from user.views import home
@@ -28,10 +27,10 @@ urlpatterns = [
     path('', index, name='index'),
     path('job/', job, name='job'),
     path('major/', major, name='major'),
-    path('postjob/<int:pk>', post_job_detail, name='jobdetail'),
-    path('postmajor/<int:pk>', post_major_detail, name='majordetail'),
+    path('post/<int:pk>', post_detail, name='post_detail'),
     path('user/', include('user.urls')),
     path('', home, name='home'),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

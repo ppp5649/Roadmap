@@ -38,12 +38,32 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
-    'job',
+    'board',
     'main',
-    'major',
     'taggit',
     'user',
+
+    # Social Login 관련 앱
+    'django.contrib.sites',  # 사이트,url정보 관리 해주는 기능
+
+    # Allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # Provider
+    'allauth.socialaccount.providers.naver',
 ]
+
+# 로그인과정전에 누구한테 맡길지
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',  # 기본장고 유저
+    'allauth.account.auth_backends.AuthenticationBackend',  # 소셜로그인 인증체계
+]
+
+# 위에'django.contrib.sites'의 첫번째 인스턴스 사용
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

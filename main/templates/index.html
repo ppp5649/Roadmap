@@ -6,19 +6,19 @@
       <div class="col-sm-4"> <!-- Column을 6개 할당해서 Hello HJ를 넣는 것-->
           <h4>직업리뷰</h4>
           <hr class="my-4" />
-          {% for post_job_detail in post_job %}
+          {% for job_model in job_models %}
           <div class="post-preview">
-            <a href="{% url 'jobdetail' post_job_detail.pk %}">
-              <h7>{{post_job_detail.title}}</h7> 
+            <a href="{% url 'post_detail' job_model.pk %}">
+              <h7>{{job_model.title}}</h7> 
             </a>
-            <i class="far fa-eye"> {{post_job_detail.viewCount}}</i> 
+            <i class="far fa-eye"> {{job_model.viewCount}}</i> 
             <!-- <p class="post-meta">
                 Posted by
                 <a href="#!">HJ</a>
-                {{post_job_detail.dateCreate}}
+                {{job_model.dateCreate}}
             </p> 
             <p class="post-counter">
-                조회수:{{post_job_detail.viewCount}}
+                조회수:{{job_model.viewCount}}
             </p>
             -->
         </div>
@@ -29,19 +29,19 @@
       <div class="col-sm-4"> <!-- Column을 6개 할당해서 Hello HJ를 넣는 것-->
           <h4>학과리뷰</h4>
           <hr class="my-4" />
-          {% for post_major_detail in post_major %}
+          {% for major_model in major_models %}
           <div class="post-preview">
-              <a href="{% url 'majordetail' post_major_detail.pk %}">
-                <h7>{{post_major_detail.title}}</h7> 
+              <a href="{% url 'post_detail' major_model.pk %}">
+                <h7>{{major_model.title}}</h7> 
               </a>
-              <i class="far fa-eye"> {{post_major_detail.viewCount}}</i> 
+              <i class="far fa-eye"> {{major_model.viewCount}}</i> 
               <!-- <p class="post-meta">
                   Posted by
                   <a href="#!">HJ</a>
-                  {{post_major_detail.dateCreate}}
+                  {{major_model.dateCreate}}
               </p> 
               <p class="post-counter">
-                  조회수:{{post_major_detail.viewCount}}
+                  조회수:{{major_model.viewCount}}
               </p>
               -->
           </div>
