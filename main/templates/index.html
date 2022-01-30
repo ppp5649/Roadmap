@@ -8,7 +8,7 @@
           <hr class="my-4" />
           {% for job_model in job_models %}
           <div class="post-preview">
-            <a href="{% url 'post_detail' job_model.pk %}">
+            <a href="{% url 'board_detail' job_model.pk %}">
               <h7>{{job_model.title}}</h7> 
             </a>
             <i class="far fa-eye"> {{job_model.viewCount}}</i> 
@@ -31,7 +31,7 @@
           <hr class="my-4" />
           {% for major_model in major_models %}
           <div class="post-preview">
-              <a href="{% url 'post_detail' major_model.pk %}">
+              <a href="{% url 'board_detail' major_model.pk %}">
                 <h7>{{major_model.title}}</h7> 
               </a>
               <i class="far fa-eye"> {{major_model.viewCount}}</i> 

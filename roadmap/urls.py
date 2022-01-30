@@ -15,19 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main.views import index, post_detail
-from board.views import job, major
 from django.conf.urls.static import static
 from django.conf import settings
+from main.views import index
 from user.views import home
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('job/', job, name='job'),
-    path('major/', major, name='major'),
-    path('post/<int:pk>', post_detail, name='post_detail'),
+    path('board/', include('board.urls')),
     path('user/', include('user.urls')),
     path('', home, name='home'),
     path('accounts/', include('allauth.urls')),

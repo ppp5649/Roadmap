@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'main',
     'taggit',
     'user',
+    'django_summernote',
 
     # Social Login 관련 앱
     'django.contrib.sites',  # 사이트,url정보 관리 해주는 기능

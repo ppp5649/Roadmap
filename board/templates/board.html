@@ -5,37 +5,19 @@
     <div class="row">
         <div class="card border-primary mb-3" style="max-width: 25rem;">
             <div class="card-header">{{board_name}}리뷰</div>
-            {% for post_detail in post %}
+            {% for board_detail in post %}
             <div class="card-body">
-                <a href="{% url 'post_detail' post_detail.pk %}">
-                <h6 class="card-title">{{post_detail.title}}</h6>
+                <a href="{% url 'board_detail' board_detail.pk %}">
+                <h6 class="card-title">{{board_detail.title}}</h6>
                 </a>
                 <p class="card-text">작성자
-                    <a href="#!">{{post_detail.writer}}</a>
-                    {{post_detail.created_at}}
+                    <a href="#!">{{board_detail.writer}}</a>
+                    {{board_detail.created_at}}
                 </p>
                 <p class="post-counter">
-                    <i class="far fa-thumbs-up"> {{post_detail.likeCount}}</i>
+                    <i class="far fa-thumbs-up"> {{board_detail.likeCount}}</i>
                     &nbsp;
-                    <i class="far fa-eye"> {{post_detail.viewCount}}</i>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="card border-primary mb-3" style="max-width: 25rem;">
-            <div class="card-header">{{board_name}}리뷰</div>
-            {% for post_detail in post_job %}
-            <div class="card-body">
-                <a href="{% url 'post_detail' post_detail.pk %}">
-                <h6 class="card-title">{{post_detail.title}}</h6>
-                </a>
-                <p class="card-text">작성자
-                    <a href="#!">{{post_detail.writer}}</a>
-                    {{post_detail.created_at}}
-                </p>
-                <p class="post-counter">
-                    <i class="far fa-thumbs-up"> {{post_detail.likeCount}}</i>
-                    &nbsp;
-                    <i class="far fa-eye"> {{post_detail.viewCount}}</i>
+                    <i class="far fa-eye"> {{board_detail.viewCount}}</i>
             </div>
             {% endfor %}
         </div>
