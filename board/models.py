@@ -14,8 +14,10 @@ class Post(models.Model):
         auto_now=True, null=True, verbose_name="최종수정일")
     likeCount = models.IntegerField(null=True, verbose_name="좋아요수")
     viewCount = models.PositiveIntegerField(default=0, verbose_name="조회수")
+    name_choices = (('직업리뷰', '직업리뷰'), ('학과리뷰', '학과리뷰'))
     name = models.CharField(
-        max_length=200, null=True, verbose_name="게시판명")
+        max_length=200, null=True, choices=name_choices, verbose_name="게시판명")
+    # choiceField는 존재하지않음 튜플 형태로 charField에 넣어주는 형태로 만들 수 있음
 
     def __str__(self):
         return self.title
