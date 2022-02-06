@@ -13,19 +13,7 @@
     <script src="https://kit.fontawesome.com/08fe7853ec.js" crossorigin="anonymous"></script>
 
     <title>Roadmap Site</title>
-    
-    <!--CSS Style Tag-->
-    <style>
-     .text_center{
-       text-align: center;
-     }
-     .text_left{
-       text-align: left;
-     }
-     .text_right{
-       text-align: right;
-     }
-    </style>
+  
   </head>
   <body>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -69,9 +57,9 @@
             </div>
             {% else %}
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button class="btn btn-light me-md-2" type="button" onclick="location.href='/board/write'">글쓰기</button>
-              <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/user/login'">로그인</button>
-              <button class="btn btn-light me-md-2" type="button" onclick="location.href='/user/register'">회원가입</button>
+                <button class="btn btn-light me-md-2" type="button" onclick="location.href='/board/write'">글쓰기</button>
+                <button class="btn btn-secondary me-md-2" type="button" onclick="location.href='/user/login'">로그인</button>
+                <button class="btn btn-light me-md-2" type="button" onclick="location.href='/user/register'">회원가입</button>
             </div>
             {% endif %}
           </div>
@@ -80,41 +68,21 @@
       <br><br>
       {% block body%}
       {% endblock body %}
-
-      <footer class="border-top">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    <ul class="list-inline text-center">
-                        <li class="list-inline-item">
-                            <a href="#!">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#!">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#!">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fas fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="small text-center text-muted fst-italic">Copyright &copy; Roadmap 2021</div>
+      <br>
+    <footer class="border-top">
+        <div class="container"> <!-- 주제가 바뀔 때 마다 컨테이너를 새로 할당 -->
+                <div class="col my-lg-4"> 
+                    <div class="small text-muted fst-italic">
+                        <a href="#">운영진 소개</a>&nbsp;&nbsp;
+                        <a href="#">공지사항</a>&nbsp;&nbsp;
+                        <a href="#">광고 및 제휴</a>&nbsp;&nbsp;
+                        <a href="#">개인정보 처리방침</a>&nbsp;&nbsp;
+                        <a href="#">문의</a>&nbsp;&nbsp;
+                    </div>
+                    <br>
+                    <div class="small text-muted fst-italic">Copyright &copy; Roadmap.com All Rights Reserved</div>
                 </div>
-            </div>
-        </div>
+        </div>    
     </footer>
     <!-- Optional JavaScript; choose one of the two! -->
 

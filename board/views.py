@@ -1,8 +1,10 @@
+from django.http import cookie, response
 from django.shortcuts import render, redirect
 from user.models import BoardMember
 from board.models import Post
 from board.forms import BoardForm
 from django.contrib.auth.decorators import login_required
+from datetime import date, datetime, timedelta
 
 # Create your views here.
 
@@ -19,8 +21,34 @@ def major(request):
 
 
 def board_detail(request, pk):
-    board_detail = Post.objects.get(pk=pk)
-    return render(request, 'board_detail.html', {'board_detail': board_detail})
+    try:
+        board_detail = Post.objects.get(pk=pk)
+        response = render(request, 'board_detail.html', {
+                          'board_detail': board_detail})
+
+        # 조회수 기능 (쿠키이용)
+        expire_date, now = datetime.now(), datetime.now()
+        expire_date += timedelta(hours=1)
+        # 이 부분 수정해야 할 수도 있음
+        expire_date = expire_date.replace(
+            hour=0, minute=0, second=0, microsecond=0)
+        expire_date -= now
+        max_age = expire_date.total_seconds()
+
+        cookie_value = request.COOKIES.get('viewCount', '_')
+
+        if f'_{pk}_' not in cookie_value:
+            cookie_value += f'{pk}_'
+            response.set_cookie('viewCount', value=cookie_value,
+                                max_age=max_age, httponly=True)
+            board_detail.viewCount += 1
+            board_detail.save()
+
+        return response
+
+    except Post.DoesNotExist:
+        return render(request, 'board_erased.html')
+      # 삭제 된 게시글은 삭제 게시글 안내 페이지로 이동
 
 
 def board_write(request):
@@ -46,7 +74,7 @@ def board_write(request):
             post.writer = user
             post.save()
 
-            return redirect('/board/1/')
+            return redirect(f'/board/{post.pk}')
 
     else:
         form = BoardForm()

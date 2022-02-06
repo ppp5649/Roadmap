@@ -9,9 +9,10 @@ class BoardForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = [
+            'name',
             'title',
             'contents',
-            'name',
+
         ]
 
     name_choices = (('직업리뷰', '직업리뷰'), ('학과리뷰', '학과리뷰'))
