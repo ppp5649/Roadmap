@@ -1,10 +1,12 @@
 from django.http import cookie, response
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from user.models import BoardMember
 from board.models import Post
 from board.forms import BoardForm
 from django.contrib.auth.decorators import login_required
 from datetime import date, datetime, timedelta
+from django.contrib.auth.models import User
+from django.contrib import auth
 
 # Create your views here.
 
@@ -28,8 +30,8 @@ def board_detail(request, pk):
 
         # 조회수 기능 (쿠키이용)
         expire_date, now = datetime.now(), datetime.now()
-        expire_date += timedelta(hours=1)
-        # 이 부분 수정해야 할 수도 있음
+        # 쿠키 만료시간 1시간으로 바꿔야함
+        expire_date += timedelta(days=1)
         expire_date = expire_date.replace(
             hour=0, minute=0, second=0, microsecond=0)
         expire_date -= now
@@ -80,3 +82,28 @@ def board_write(request):
         form = BoardForm()
 
     return render(request, 'board_write.html', {'form': form})
+
+
+# def board_update(request):
+
+
+# def board_delete(request):
+
+@login_required
+def post_like_toggle(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+    boardmember = BoardMember.objects.get.all()
+
+    check_like_post = boardmember.like_posts.filter(id=post_id)
+
+    if check_like_post.exists():
+        boardmember.like_posts.remove(post)
+        post.like_count -= 1
+        post.save()
+    else:
+        boardmember.like_posts.add(post)
+        post.like_count += 1
+        post.save()
+
+    return redirect('like:post_detail', post_id)

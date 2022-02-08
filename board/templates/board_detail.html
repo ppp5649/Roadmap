@@ -8,9 +8,9 @@
                         <div class="post-heading">
                             <h1>{{board_detail.title}}</h1><br>
                             <div>
-                                <i class="far fa-eye"> {{board_detail.viewCount}}</i>
+                                <i class="far fa-eye"> {{board_detail.view_count}}</i>
                                 &nbsp;
-                                <i class="far fa-thumbs-up"> {{board_detail.likeCount}}</i>
+                                <i class="far fa-thumbs-up"> {{board_detail.like_count}}</i>
                             </div>
                             <a href="#!">{{board_detail.writer}}</a>
                             &nbsp;{{board_detail.created_at}}
@@ -31,15 +31,20 @@
                         {% if board_detail.img %}
                         <img class="img-fluid" src="{{board_detail.img.url}}" alt="" /></a>
                         {% endif %}
-                        <p>{{board_detail.category.names.0}}</p>
                     </div>
                 </div>
             </div>
         </article>
-        <div class="container position-relative px-4 px-lg-1">
-            <div class="row gx-4 gx-lg-5">
-                <div class="col-md-10 col-lg-8 col-xl-7">
-                    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="{% url 'like:post_like_toggle' post.id %}">
+                        {% if post in user.boardmember.like_posts.all %}
+                            취소
+                        {% else %}
+                            좋아요
+                        {% endif %}
+                    </a>
                 </div>   
             </div>
         </div>

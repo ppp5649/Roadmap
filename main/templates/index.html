@@ -4,41 +4,44 @@
 <div class="container"> <!-- 주제가 바뀔 때 마다 컨테이너를 새로 할당 -->
   <div class="row">
       <div class="col-sm-4"> <!-- Column을 6개 할당해서 Hello HJ를 넣는 것-->
-          <h4>직업리뷰</h4>
+		<i class="fas fa-user-tie"> 직업리뷰</i>
+		<a href="{% url 'job' %}" class="float-md-end">
+			더보기>
+		</a>
           <hr class="my-4" />
           {% for job_model in job_models %}
           {% if job_model.img %}
           <div class="post-preview">
-            <i class="far fa-image"></i>
-            <a href="{% url 'board_detail' job_model.pk %}">
-              <h7>{{job_model.title}}</h7> 
-            </a>
-            <i class="far fa-eye"> {{job_model.viewCount}}</i> 
+			  <a href="{% url 'board_detail' job_model.pk %}">
+			    <i class="far fa-image"> {{job_model.title}}</i>  
+			  </a>
+			  <i class="far fa-eye float-md-end"> {{job_model.view_count}}</i>
+		  </div>
             <!-- <p class="post-meta">
                 Posted by
                 <a href="#!">HJ</a>
                 {{job_model.dateCreate}}
             </p> 
             <p class="post-counter">
-                조회수:{{job_model.viewCount}}
+                조회수:{{job_model.view_count}}
             </p>
             -->
-          </div>
+          
           <!-- Divider-->
           <hr class="my-4" />
           {% else %}
           <div class="post-preview">
             <a href="{% url 'board_detail' job_model.pk %}">
-              <h7>{{job_model.title}}</h7> 
+				<i class="far">{{job_model.title}}</i>
             </a>
-            <i class="far fa-eye"> {{job_model.viewCount}}</i> 
+            <i class="far fa-eye float-md-end"> {{job_model.view_count}}</i> 
             <!-- <p class="post-meta">
                 Posted by
                 <a href="#!">HJ</a>
                 {{job_model.dateCreate}}
             </p> 
             <p class="post-counter">
-                조회수:{{job_model.viewCount}}
+                조회수:{{job_model.view_count}}
             </p>
             -->
           </div>
@@ -47,24 +50,27 @@
           {% endif %}
           {% endfor %}
       </div>
+	  &nbsp;&nbsp;
       <div class="col-sm-4"> <!-- Column을 6개 할당해서 Hello HJ를 넣는 것-->
-          <h4>학과리뷰</h4>
+		<i class="fas fa-school"> 학과리뷰</i>
+		<a href="{% url 'major' %}" class="float-md-end">
+			더보기>
+		</a>
           <hr class="my-4" />
           {% for major_model in major_models %}
           {% if major_model.img %}
           <div class="post-preview">
-              <i class="far fa-image"></i>
               <a href="{% url 'board_detail' major_model.pk %}">
-                <h7>{{major_model.title}}</h7> 
+                <i class="far fa-image"> {{major_model.title}}</i>
               </a>
-              <i class="far fa-eye"> {{major_model.viewCount}}</i> 
+              <i class="far fa-eye float-md-end"> {{major_model.view_count}}</i> 
               <!-- <p class="post-meta">
                   Posted by
                   <a href="#!">HJ</a>
                   {{major_model.dateCreate}}
               </p> 
               <p class="post-counter">
-                  조회수:{{major_model.viewCount}}
+                  조회수:{{major_model.view_count}}
               </p>
               -->
           </div>
@@ -73,16 +79,16 @@
           {% else %}
           <div class="post-preview">
             <a href="{% url 'board_detail' major_model.pk %}">
-              <h7>{{major_model.title}}</h7> 
+				<i class="far">{{major_model.title}}</i>
             </a>
-            <i class="far fa-eye"> {{major_model.viewCount}}</i> 
+            <i class="far fa-eye float-md-end"> {{major_model.view_count}}</i> 
             <!-- <p class="post-meta">
                 Posted by
                 <a href="#!">HJ</a>
                 {{major_model.dateCreate}}
             </p> 
             <p class="post-counter">
-                조회수:{{major_model.viewCount}}
+                조회수:{{major_model.view_count}}
             </p>
             -->
           </div>
